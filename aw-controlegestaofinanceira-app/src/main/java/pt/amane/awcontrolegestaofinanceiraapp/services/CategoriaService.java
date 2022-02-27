@@ -28,7 +28,7 @@ public class CategoriaService {
 	public CategoriaDTO findById(Long id) {
 		Optional<Categoria> categoriaId = repository.findById(id);
 		Categoria categoria = categoriaId.orElseThrow(
-				() -> new ResourceNotFoundException("Object not found! Id: " + id + " Type: " + Categoria.class));
+				() -> new ResourceNotFoundException("Object not found! Id: " + id + ", Type: " + Categoria.class));
 		return new CategoriaDTO(categoria);
 	}
 
