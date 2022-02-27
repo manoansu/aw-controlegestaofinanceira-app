@@ -4,22 +4,22 @@ import java.io.Serializable;
 
 import pt.amane.awcontrolegestaofinanceiraapp.entities.Categoria;
 
-public class CategriaDTO implements Serializable {
+public class CategoriaDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
 	private String nome;
 
-	public CategriaDTO() {
+	public CategoriaDTO() {
 	}
 
-	public CategriaDTO(Long id, String nome) {
+	public CategoriaDTO(Long id, String nome) {
 		this.id = id;
 		this.nome = nome;
 	}
 
-	public CategriaDTO(Categoria categoria) {
+	public CategoriaDTO(Categoria categoria) {
 		id = categoria.getId();
 		nome = categoria.getNome();
 	}
