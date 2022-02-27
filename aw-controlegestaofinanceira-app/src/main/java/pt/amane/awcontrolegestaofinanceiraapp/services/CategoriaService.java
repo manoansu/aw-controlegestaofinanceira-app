@@ -27,8 +27,8 @@ public class CategoriaService {
 	@Transactional(readOnly = true)
 	public CategoriaDTO findById(Long id) {
 		Optional<Categoria> categoriaId = repository.findById(id);
-		Categoria categoria = categoriaId.orElseThrow(
-				() -> new ResourceNotFoundException("Object not found! Id: " + id + ", Type: " + Categoria.class));
+		Categoria categoria = categoriaId.orElseThrow(() -> new ResourceNotFoundException(
+				"Object not found! Id: " + id + ", Type: " + Categoria.class.getName()));
 		return new CategoriaDTO(categoria);
 	}
 
@@ -58,13 +58,13 @@ public class CategoriaService {
 			throw new ResourceNotFoundException("Onbject not found! Id: " + id + ", Type: " + dto.getId());
 		}
 	}
-	
+
 	public void delete(Long id) {
 		try {
 			repository.deleteById(id);
 		} catch (EmptyResultDataAccessException e) {
 			throw new ResourceNotFoundException("Id not found! Id: " + id);
-		}catch (DataIntegrityViolationException e) {
+		} catch (DataIntegrityViolationException e) {
 			throw new DataBaseIntegrityViolationException("category cannot be deleted! has associated object..");
 		}
 	}
